@@ -19,6 +19,7 @@
 
     <modules>
         <module>hubu-component-register</module>
+        <module>hubu-component-gateway</module>
     </modules>
 
     <properties>
