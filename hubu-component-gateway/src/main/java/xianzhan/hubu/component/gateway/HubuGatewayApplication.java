@@ -1,4 +1,4 @@
-package xianzhan.hubu;
+package xianzhan.hubu.component.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
