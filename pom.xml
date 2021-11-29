@@ -20,6 +20,10 @@
     <modules>
         <module>hubu-component-register</module>
         <module>hubu-component-gateway</module>
+        <module>hubu-core</module>
+        <module>hubu-service-core</module>
+        <module>hubu-service-corp</module>
+        <module>hubu-service-corp-api</module>
     </modules>
 
     <properties>
@@ -28,6 +32,7 @@
         <maven.compiler.target>17</maven.compiler.target>
 
         <spring-cloud.version>2020.0.4</spring-cloud.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -48,6 +53,12 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
