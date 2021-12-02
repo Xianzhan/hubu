@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 80
 
 spring:
   cloud:
@@ -8,6 +8,13 @@ spring:
         - id: baidu
           uri: https://www.baidu.com
           predicates:
-            - Path=/baidu
+            - Path=/baidu/**
           filters:
+            # https://www.baidu.com/baidu/** -> https://www.baidu.com/**
             - StripPrefix=1
+
+        # 百度搜索
+        - id: baidu_s
+          uri: https://www.baidu.com
+          predicates:
+            - Path=/s
