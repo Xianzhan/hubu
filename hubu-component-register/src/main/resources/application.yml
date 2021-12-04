@@ -9,3 +9,7 @@ eureka:
 
 server:
   port: 8761
+
+spring:
+  application:
+    name: hubu-component-eureka
