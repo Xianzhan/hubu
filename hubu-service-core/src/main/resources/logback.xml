@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<configuration>
+<!-- scan: 是否扫描配置文件，若改变重新加载 -->
+<!-- scanPeriod: 扫描时间间隔 -->
+<!-- debug: 是否打印 logback 内部日志信息 -->
+<configuration scan="false" scanPeriod="60 seconds" debug="false">
+
+    <!-- property: 定义变量后，可以使 `${}` 来使用变量, 使用 resource=file 加载文件, 或者使用 name=k value=v -->
     <property resource="logback.properties"/>
+
+    <!-- contextName: 用于区分不同应用程序的记录 -->
+    <contextName>${hubu_context_name}</contextName>
+
     <appender name="CONSOLE-LOG" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] [%X{hubu-request-id}] %m%n</pattern>
+            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] [%X{hubu-request-ip}] [%X{hubu-request-id}] %m%n</pattern>
         </layout>
     </appender>
     <appender name="INFO-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -13,7 +22,7 @@
             <onMismatch>ACCEPT</onMismatch>
         </filter>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] [%X{hubu-request-id}] %m%n</pattern>
+            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] [%X{hubu-request-ip}] [%X{hubu-request-id}] %m%n</pattern>
         </encoder>
 
         <!-- 滚动策略 -->
@@ -28,13 +37,15 @@
             <level>ERROR</level>
         </filter>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] [%X{hubu-request-id}] %m%n</pattern>
+            <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%C] [%t] [%L] [%-5p] [%X{hubu-request-ip}] [%X{hubu-request-id}] %m%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <fileNamePattern>${hubu_error_file_path}</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
     </appender>
+
+    <!-- <logger name="java.package.name"/> -->
 
     <root level="info">
         <appender-ref ref="CONSOLE-LOG"/>

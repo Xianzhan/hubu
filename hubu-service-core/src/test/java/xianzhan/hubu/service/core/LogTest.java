@@ -3,7 +3,9 @@ package xianzhan.hubu.service.core;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.MDC;
+import xianzhan.hubu.core.util.IdUtil;
 
+import java.net.InetAddress;
 import java.time.LocalDateTime;
 
 /**
@@ -14,8 +16,9 @@ import java.time.LocalDateTime;
 public class LogTest {
 
     @Test
-    public void test() {
-        MDC.put("hubu-request-id", "hubu-request-id" + Math.random());
+    public void test() throws Exception {
+        MDC.put("hubu-request-ip", InetAddress.getLocalHost().getHostAddress());
+        MDC.put("hubu-request-id", IdUtil.uuid());
 
         LocalDateTime now = LocalDateTime.now();
         log.error("error {}", now);
