@@ -15,7 +15,7 @@
     <artifactId>hubu</artifactId>
     <version>0.0.1</version>
     <name>hubu</name>
-    <description>户部，管理钱财、对账</description>
+    <description>Spring Cloud 开发模板</description>
 
     <modules>
         <module>hubu-component-register</module>
