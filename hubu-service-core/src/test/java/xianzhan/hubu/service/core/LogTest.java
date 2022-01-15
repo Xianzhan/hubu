@@ -3,6 +3,7 @@ package xianzhan.hubu.service.core;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.slf4j.MDC;
+import xianzhan.hubu.core.util.HttpUtil;
 import xianzhan.hubu.core.util.IdUtil;
 
 import java.net.InetAddress;
@@ -17,12 +18,12 @@ public class LogTest {
 
     @Test
     public void test() throws Exception {
-        MDC.put("hubu-request-ip", InetAddress.getLocalHost().getHostAddress());
-        MDC.put("hubu-request-id", IdUtil.uuid());
+        MDC.put(HttpUtil.HEADER_REQUEST_IP, InetAddress.getLocalHost().getHostAddress());
+        MDC.put(HttpUtil.HEADER_REQUEST_ID, IdUtil.uuid());
 
         LocalDateTime now = LocalDateTime.now();
-        log.error("error {}", now);
-        log.warn("warn {}", now);
-        log.info("info {}", now);
+        log.error("{}", now);
+        log.warn("{}", now);
+        log.info("{}", now);
     }
 }
