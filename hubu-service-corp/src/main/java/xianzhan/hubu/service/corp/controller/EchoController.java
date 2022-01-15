@@ -25,7 +25,6 @@ public class EchoController {
 
     @GetMapping("/{str}")
     public Response<String> echo(@PathVariable("str") String str) {
-        log.info("Echo - echo: {}", str);
         return Response.ok(echoApi.echo(str));
     }
 }
