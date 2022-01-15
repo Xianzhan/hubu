@@ -12,6 +12,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>xianzhan</groupId>
+            <artifactId>hubu-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
