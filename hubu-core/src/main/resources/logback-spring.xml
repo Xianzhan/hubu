@@ -17,6 +17,7 @@
             <pattern>[%d{yyyy-MM-dd' 'HH:mm:ss.sss}] [%X{hubu-request-ip}] [%X{hubu-request-id}] [%t] [%logger{16}] [%L] [%-5p] %m%n</pattern>
         </layout>
     </appender>
+
     <appender name="INFO-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
@@ -49,16 +50,31 @@
         </rollingPolicy>
     </appender>
 
+    <!-- 异步日志输出 -->
+    <appender name="ASYNC-INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的 80% 已满,则会丢弃 TRACT、DEBUG、INFO 级别的日志 -->
+        <discardingThreshold>${hubu_async_discarding_threshold}</discardingThreshold>
+        <!-- 更改默认的队列的深度, 该值会影响性能.默认值为 256 -->
+        <queueSize>${hubu_async_queue_size}</queueSize>
+        <!-- 添加附加的 appender, 最多只能添加一个 -->
+        <appender-ref ref="INFO-LOG"/>
+    </appender>
+    <appender name="ASYNC-ERROR" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>${hubu_async_discarding_threshold}</discardingThreshold>
+        <queueSize>${hubu_async_queue_size}</queueSize>
+        <appender-ref ref="ERROR-LOG"/>
+    </appender>
+
     <!-- <logger name="java.package.name"/> -->
 
     <root level="info">
         <appender-ref ref="CONSOLE-LOG"/>
-        <appender-ref ref="INFO-LOG"/>
-        <appender-ref ref="ERROR-LOG"/>
+        <appender-ref ref="ASYNC-INFO"/>
+        <appender-ref ref="ASYNC-ERROR"/>
     </root>
 </configuration>
 
-<!--
- 为什么叫 logback-spring.xml 而不叫 logback.xml?
-     在 Spring Cloud 项目启动时，第一个创建的上下文是 bootstrap，若用 logback.xml 将无法获取相关变量，所以改名 logback-spring.xml。
- -->
+        <!--
+         为什么叫 logback-spring.xml 而不叫 logback.xml?
+             在 Spring Cloud 项目启动时，第一个创建的上下文是 bootstrap，若用 logback.xml 将无法获取相关变量，所以改名 logback-spring.xml。
+         -->
