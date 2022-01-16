@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import xianzhan.hubu.base.model.Response;
-import xianzhan.hubu.service.corp.api.EchoApi;
+import xianzhan.hubu.service.corp.service.IEcho;
 
 import javax.annotation.Resource;
 
@@ -21,11 +21,11 @@ import javax.annotation.Resource;
 public class EchoController {
 
     @Resource
-    private EchoApi echoApi;
+    private IEcho echo;
 
     @GetMapping("/{str}")
     public Response<String> echo(@PathVariable("str") String str) {
-        return Response.ok(echoApi.echo(str));
+        return Response.ok(echo.echo(str));
     }
 }
 

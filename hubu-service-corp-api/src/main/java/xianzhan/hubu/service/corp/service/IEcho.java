@@ -1,11 +1,11 @@
-package xianzhan.hubu.service.corp.api;
+package xianzhan.hubu.service.corp.service;
 
 /**
  * 响应服务
  *
  * @author xianzhan
  */
-public interface EchoApi {
+public interface IEcho {
 
     /**
      * 将参数返回

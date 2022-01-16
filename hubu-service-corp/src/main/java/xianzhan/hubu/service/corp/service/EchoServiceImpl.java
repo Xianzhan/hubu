@@ -1,4 +1,4 @@
-package xianzhan.hubu.service.corp.api;
+package xianzhan.hubu.service.corp.service;
 
 import org.springframework.stereotype.Service;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * @author xianzhan
  */
 @Service
-public class EchoService implements EchoApi {
+public class EchoServiceImpl implements IEcho {
     @Override
     public String echo(String str) {
         return str;
