@@ -13,7 +13,7 @@
     <dependencies>
         <dependency>
             <groupId>xianzhan</groupId>
-            <artifactId>hubu-core</artifactId>
+            <artifactId>hubu-base</artifactId>
             <version>0.0.1</version>
         </dependency>
         <dependency>

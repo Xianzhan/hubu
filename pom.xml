@@ -18,10 +18,10 @@
     <description>Spring Cloud 开发模板</description>
 
     <modules>
+        <module>hubu-base</module>
         <module>hubu-component-register</module>
         <module>hubu-component-gateway</module>
-        <module>hubu-core</module>
-        <module>hubu-service-core</module>
+        <module>hubu-service-base</module>
         <module>hubu-service-corp</module>
         <module>hubu-service-corp-api</module>
     </modules>

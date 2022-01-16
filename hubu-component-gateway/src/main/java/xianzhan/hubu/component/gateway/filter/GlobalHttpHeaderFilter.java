@@ -9,8 +9,8 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-import xianzhan.hubu.core.util.HttpUtil;
-import xianzhan.hubu.core.util.StringUtil;
+import xianzhan.hubu.base.util.HttpUtil;
+import xianzhan.hubu.base.util.StringUtil;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
