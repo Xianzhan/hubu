@@ -43,3 +43,10 @@ spring:
             - Path=/corp/**
           filters:
             - StripPrefix=1
+
+        - id: bill
+          uri: lb://hubu-service-bill
+          predicates:
+            - Path=/bill/**
+          filters:
+            - StripPrefix=1

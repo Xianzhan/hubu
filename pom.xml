@@ -24,6 +24,8 @@
         <module>hubu-service-base</module>
         <module>hubu-service-corp</module>
         <module>hubu-service-corp-api</module>
+        <module>hubu-service-bill</module>
+        <module>hubu-service-bill-api</module>
     </modules>
 
     <properties>

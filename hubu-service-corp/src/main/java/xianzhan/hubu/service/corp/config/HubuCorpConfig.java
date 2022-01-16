@@ -8,5 +8,5 @@ import xianzhan.hubu.service.base.config.BaseHubuConfig;
  * @since 2022-01-16
  */
 @Configuration
-public class HubuConfig extends BaseHubuConfig {
+public class HubuCorpConfig extends BaseHubuConfig {
 }

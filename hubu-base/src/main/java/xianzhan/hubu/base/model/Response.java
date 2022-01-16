@@ -30,6 +30,10 @@ public class Response<T> {
      */
     private T      data;
 
+    public static <T> Response<T> ok() {
+        return new Response<>(CODE_OK, null, null);
+    }
+
     public static <T> Response<T> ok(T t) {
         return new Response<>(CODE_OK, null, t);
     }
