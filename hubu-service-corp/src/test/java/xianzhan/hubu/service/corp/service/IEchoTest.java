@@ -3,6 +3,7 @@ package xianzhan.hubu.service.corp.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import xianzhan.hubu.base.model.Response;
 
 import javax.annotation.Resource;
 
@@ -15,7 +16,8 @@ public class IEchoTest {
     @Test
     public void testEcho() {
         String str = "echo";
-        String ret = echo.echo(str);
-        Assertions.assertEquals(str, ret);
+        Response<String> ret = echo.echo(str);
+        Assertions.assertTrue(ret.areOk());
+        Assertions.assertEquals(str, ret.getData());
     }
 }

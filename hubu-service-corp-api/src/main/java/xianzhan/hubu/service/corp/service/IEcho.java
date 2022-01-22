@@ -1,5 +1,7 @@
 package xianzhan.hubu.service.corp.service;
 
+import xianzhan.hubu.base.model.Response;
+
 /**
  * 响应服务
  *
@@ -13,5 +15,5 @@ public interface IEcho {
      * @param str 参数
      * @return 参数
      */
-    String echo(String str);
+     Response<String> echo(String str);
 }

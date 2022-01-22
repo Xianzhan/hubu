@@ -28,6 +28,12 @@
             <artifactId>hubu-service-bill-api</artifactId>
             <version>0.0.1</version>
         </dependency>
+        <!-- corp 服务提供 -->
+        <dependency>
+            <groupId>xianzhan</groupId>
+            <artifactId>hubu-service-corp-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

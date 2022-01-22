@@ -30,6 +30,14 @@ public class Response<T> {
      */
     private T      data;
 
+    /**
+     * @return 该响应是否成功
+     * @apiNote 此处不用 isOk 是因为个别框架会序列化成 ok 字段
+     */
+    public boolean areOk() {
+        return CODE_OK == code;
+    }
+
     public static <T> Response<T> ok() {
         return new Response<>(CODE_OK, null, null);
     }
