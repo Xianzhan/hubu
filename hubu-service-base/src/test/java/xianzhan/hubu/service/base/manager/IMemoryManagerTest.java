@@ -1,5 +1,6 @@
 package xianzhan.hubu.service.base.manager;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @author 42444
  * @since 2022-05-28
  */
+@Slf4j
 @SpringJUnitConfig
 @SpringBootTest(classes = ServiceBaseApplication.class)
 public class IMemoryManagerTest {
@@ -31,8 +33,44 @@ public class IMemoryManagerTest {
 
     @Test
     public void testGet() {
+        memoryManager.set(K, V, 1, TimeUnit.MINUTES);
         String first = memoryManager.get(K);
         Assertions.assertEquals(V, first);
+    }
+
+    @Test
+    public void testDel() {
+        memoryManager.set(K, V, 1, TimeUnit.MINUTES);
+        Assertions.assertTrue(memoryManager.del(K));
+    }
+
+    @Test
+    public void testIncr() {
+        long first = memoryManager.incr("times");
+        Assertions.assertEquals(0L, first);
+        long second = memoryManager.incr("times");
+        Assertions.assertEquals(1L, second);
+        Assertions.assertTrue(memoryManager.del("times"));
+    }
+
+    @Test
+    public void testExists() {
+        memoryManager.set(K, V, 1, TimeUnit.MINUTES);
+        Assertions.assertTrue(memoryManager.exists(K));
+    }
+
+    @Test
+    public void testExpire() {
+        memoryManager.set(K, V, 1, TimeUnit.MINUTES);
+        Assertions.assertTrue(memoryManager.expire(K, 10));
+    }
+
+    @Test
+    public void testTtl() {
+        memoryManager.set(K, V, 2, TimeUnit.MINUTES);
+        long ttl = memoryManager.ttl(K);
+        log.info("剩余时间. key: {}, ttl: {}ms", K, ttl);
+        Assertions.assertTrue(ttl > 60L);
     }
 
     @Test

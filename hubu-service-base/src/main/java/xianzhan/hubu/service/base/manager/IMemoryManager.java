@@ -28,4 +28,39 @@ public interface IMemoryManager {
      * @return value
      */
     <V> V get(String key);
+
+    /**
+     * 删除 key
+     *
+     * @param key key
+     * @return 是否删除
+     */
+    boolean del(String key);
+
+    long incr(String key);
+
+    /**
+     * 判断 key 是否存在
+     *
+     * @param key key
+     * @return key 是否存在
+     */
+    boolean exists(String key);
+
+    /**
+     * 设置 key 的过期时间（单位：秒）
+     *
+     * @param key     key
+     * @param seconds 过期时间（单位：秒）
+     * @return 设置过期时间是否成功
+     */
+    boolean expire(String key, long seconds);
+
+    /**
+     * 返回 key 的剩余存活时间（单位：毫秒）
+     *
+     * @param key key
+     * @return key 的剩余存活时间（单位：毫秒）
+     */
+    long ttl(String key);
 }
