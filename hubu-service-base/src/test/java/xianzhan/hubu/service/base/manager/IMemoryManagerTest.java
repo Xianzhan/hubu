@@ -46,4 +46,46 @@ public class IMemoryManagerTest {
         Assertions.assertNull(second);
         System.out.println(LocalDateTime.now());
     }
+
+    @Test
+    public void testSetObject() {
+        var p = new Person("xianzhan", 2022);
+        memoryManager.set("xianzhan", p, 1, TimeUnit.MINUTES);
+    }
+
+    @Test
+    public void testGetObject() {
+        Person xianzhan = memoryManager.get("xianzhan");
+        Assertions.assertEquals("xianzhan", xianzhan.getName());
+        Assertions.assertEquals(2022, xianzhan.getId());
+    }
+
+    public static class Person {
+        private String name;
+        private int    id;
+
+        public Person() {
+        }
+
+        public Person(String name, int id) {
+            this.name = name;
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
 }

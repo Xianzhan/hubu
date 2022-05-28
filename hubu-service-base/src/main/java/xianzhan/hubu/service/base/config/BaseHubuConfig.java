@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Bean;
 import xianzhan.hubu.service.base.aop.HttpLogAop;
 import xianzhan.hubu.service.base.filter.HttpHeaderFilter;
 import xianzhan.hubu.service.base.interceptor.HubuFeignInterceptor;
-import xianzhan.hubu.service.base.manager.IMemoryManager;
-import xianzhan.hubu.service.base.manager.memory.RedissonMemoryManager;
 
 /**
  * Hubu 基础配置
@@ -14,7 +12,7 @@ import xianzhan.hubu.service.base.manager.memory.RedissonMemoryManager;
  * @author xianzhan
  * @since 2022-01-16
  */
-public abstract class BaseHubuConfig {
+public abstract class BaseHubuConfig extends BaseConfig {
 
     @Bean
     public HttpHeaderFilter httpHeaderFilter() {
@@ -34,10 +32,5 @@ public abstract class BaseHubuConfig {
     @Bean
     public HubuFeignInterceptor feignInterceptor() {
         return new HubuFeignInterceptor();
-    }
-
-    @Bean
-    public IMemoryManager memoryManager() {
-        return new RedissonMemoryManager();
     }
 }
