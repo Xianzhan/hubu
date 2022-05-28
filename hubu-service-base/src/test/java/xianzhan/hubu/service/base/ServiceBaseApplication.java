@@ -1,4 +1,4 @@
-package xianzhan.hubu.service.base.redisson;
+package xianzhan.hubu.service.base;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,9 +6,9 @@ import org.springframework.cache.annotation.EnableCaching;
 
 @EnableCaching
 @SpringBootApplication
-public class RedissonApplication {
+public class ServiceBaseApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RedissonApplication.class, args);
+        SpringApplication.run(ServiceBaseApplication.class, args);
     }
 }
