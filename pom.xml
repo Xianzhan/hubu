@@ -36,6 +36,8 @@
         <spring-cloud.version>2021.0.0</spring-cloud.version>
         <lombok.version>1.18.24</lombok.version>
         <logback.version>1.2.11</logback.version>
+        <!-- https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter#1-add-redisson-spring-boot-starter-dependency-into-your-project -->
+        <redisson.version>3.17.3</redisson.version>
     </properties>
 
     <dependencyManagement>
