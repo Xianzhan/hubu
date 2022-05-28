@@ -11,3 +11,8 @@ feign:
 spring:
   application:
     name: hubu-service-base
+
+  redis:
+    redisson:
+      file: classpath:redisson.yaml
+    timeout: 10000
