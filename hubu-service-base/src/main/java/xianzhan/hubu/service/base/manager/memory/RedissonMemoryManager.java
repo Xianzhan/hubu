@@ -1,8 +1,6 @@
 package xianzhan.hubu.service.base.manager.memory;
 
-import org.redisson.api.RAtomicLong;
-import org.redisson.api.RBucket;
-import org.redisson.api.RedissonClient;
+import org.redisson.api.*;
 import xianzhan.hubu.service.base.manager.IMemoryManager;
 
 import javax.annotation.Resource;
@@ -58,5 +56,30 @@ public class RedissonMemoryManager implements IMemoryManager {
     public long ttl(String key) {
         RBucket<?> bucket = redissonClient.getBucket(key);
         return bucket.remainTimeToLive();
+    }
+
+    @Override
+    public void lock(String lockName, Runnable criticalSection) {
+        RLock lock = redissonClient.getLock(lockName);
+        try {
+            lock.lock();
+            criticalSection.run();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    @Override
+    public void semaphore(String semaphoreName, int permits, Runnable criticalSection) {
+        RSemaphore semaphore = redissonClient.getSemaphore(semaphoreName);
+        try {
+            semaphore.trySetPermits(permits);
+            semaphore.acquire();
+            criticalSection.run();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            semaphore.release();
+        }
     }
 }

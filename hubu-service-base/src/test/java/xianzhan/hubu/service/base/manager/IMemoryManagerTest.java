@@ -9,7 +9,10 @@ import xianzhan.hubu.service.base.ServiceBaseApplication;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author 42444
@@ -96,6 +99,59 @@ public class IMemoryManagerTest {
         Person xianzhan = memoryManager.get("xianzhan");
         Assertions.assertEquals("xianzhan", xianzhan.getName());
         Assertions.assertEquals(2022, xianzhan.getId());
+    }
+
+    @Test
+    public void testLock() throws InterruptedException {
+        String lockName = "testLock";
+        Runnable r = () -> {
+            String threadName = Thread.currentThread().getName();
+            log.info("{}, 开始获取锁{}.", threadName, lockName);
+            memoryManager.lock(lockName, () -> {
+                log.info("{}，获取到锁{}，当前时间{}.", threadName, lockName, LocalDateTime.now());
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    log.error("线程被中断.", e);
+                }
+                log.info("{}，开始释放锁{}，当前时间{}.", threadName, lockName, LocalDateTime.now());
+            });
+        };
+
+        ExecutorService threadPool = Executors.newFixedThreadPool(3);
+        for (int i = 0; i < 3; i++) {
+            threadPool.execute(r);
+        }
+        threadPool.shutdown();
+        if (threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS)) {
+            log.info("结束");
+        }
+    }
+
+    @Test
+    public void testSemaphore() throws InterruptedException {
+        AtomicInteger i = new AtomicInteger();
+        Runnable r = () -> {
+            memoryManager.semaphore("testSemaphore2", 2, () -> {
+                String name = Thread.currentThread().getName();
+                log.info("{} - {} 凭证进入，当前时间：{}", name, i.get(), LocalDateTime.now());
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                log.info("{} - {} 凭证退出，当前时间：{}", name, i.getAndIncrement(), LocalDateTime.now());
+            });
+        };
+
+        ExecutorService threadPool = Executors.newFixedThreadPool(3);
+        for (int j = 0; j < 3; j++) {
+            threadPool.execute(r);
+        }
+        threadPool.shutdown();
+        if (threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS)) {
+            log.info("结束");
+        }
     }
 
     public static class Person {
