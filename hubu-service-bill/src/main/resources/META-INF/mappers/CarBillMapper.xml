@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xianzhan.hubu.service.bill.mapper.CarBillMapper">
+    <resultMap id="baseResultMap" type="xianzhan.hubu.service.bill.pj.entity.CarBillEntity">
+        <result column="id" property="id"/>
+        <result column="corp_id" property="corpId"/>
+        <result column="supplier_code" property="supplierCode"/>
+        <result column="order_id" property="orderId"/>
+        <result column="is_del" property="isDel"/>
+    </resultMap>
+
+    <insert id="insert">
+        INSERT INTO hb_car_bill(corp_id, supplier_code, order_id, is_del)
+        VALUES (#{corpId}, #{supplierCode}, #{orderId}, #{isDel})
+    </insert>
+
+    <select id="selectById" resultType="xianzhan.hubu.service.bill.pj.entity.CarBillEntity">
+        SELECT id,
+               corp_id,
+               supplier_code,
+               order_id,
+               is_del
+        FROM hb_car_bill
+        WHERE id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM hb_car_bill
+        WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,3 @@
+# 创建数据库
+DROP DATABASE IF EXISTS hubu;
+CREATE DATABASE hubu;
