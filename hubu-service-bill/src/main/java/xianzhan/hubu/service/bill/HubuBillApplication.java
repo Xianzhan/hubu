@@ -1,5 +1,6 @@
 package xianzhan.hubu.service.bill;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @EnableEurekaClient
 @SpringBootApplication
+@MapperScan("xianzhan.hubu.service.bill.mapper")
 public class HubuBillApplication {
 
     public static void main(String[] args) {

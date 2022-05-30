@@ -11,5 +11,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>hubu-service-bill-api</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>xianzhan</groupId>
+            <artifactId>hubu-base</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>
