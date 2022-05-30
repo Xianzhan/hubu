@@ -20,12 +20,20 @@ public class CarBillMapperTest {
     @Test
     public void testInsert() {
         CarBillEntity billEntity = new CarBillEntity();
-        billEntity.setCorpId("test");
-        billEntity.setSupplierCode("test");
-        billEntity.setOrderId("test");
+        billEntity.setCorpId("2022");
+        billEntity.setSupplierCode("0530");
+        billEntity.setOrderId("2330");
         billEntity.setIsDel(0);
 
         int insert = carBillMapper.insert(billEntity);
         Assertions.assertEquals(1, insert);
+        System.out.println(billEntity.getId());
+    }
+
+    @Test
+    public void testSelectById() {
+        CarBillEntity bill = carBillMapper.selectById(1531297224031440897L);
+        System.out.println(bill);
+        Assertions.assertEquals("2330", bill.getOrderId());
     }
 }

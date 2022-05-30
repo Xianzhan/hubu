@@ -36,10 +36,12 @@
         <spring-cloud.version>2021.0.0</spring-cloud.version>
         <lombok.version>1.18.24</lombok.version>
         <logback.version>1.2.11</logback.version>
+
         <!-- https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter#1-add-redisson-spring-boot-starter-dependency-into-your-project -->
         <redisson-spring-boot.version>3.17.3</redisson-spring-boot.version>
         <mybatis-plus-spring-boot.version>3.5.1</mybatis-plus-spring-boot.version>
         <druid-spring-boot.version>1.2.9</druid-spring-boot.version>
+        <shardingsphere-spring-boot.version>5.1.1</shardingsphere-spring-boot.version>
     </properties>
 
     <dependencyManagement>
