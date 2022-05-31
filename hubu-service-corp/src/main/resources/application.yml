@@ -9,3 +9,8 @@ server:
 spring:
   application:
     name: hubu-service-corp
+
+  redis:
+    redisson:
+      file: classpath:redisson.yaml
+    timeout: 10000
