@@ -10,18 +10,19 @@ spring:
   application:
     name: hubu-service-bill
 
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/hubu?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
-    username: xianzhan
-    password: xianzhan
+# see application.properties
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/hubu?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+#    username: xianzhan
+#    password: xianzhan
 
   redis:
     redisson:
       file: classpath:redisson.yaml
     timeout: 10000
 
-logging:
-  level:
-    com.baomidou.mybatisplus.samples.quickstart: debug
+#logging:
+#  level:
+#    com.baomidou.mybatisplus.samples.quickstart: debug
