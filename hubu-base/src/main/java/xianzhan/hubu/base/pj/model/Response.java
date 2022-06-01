@@ -1,4 +1,4 @@
-package xianzhan.hubu.base.model;
+package xianzhan.hubu.base.pj.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package xianzhan.hubu.service.corp.service;
 
 import org.springframework.stereotype.Service;
-import xianzhan.hubu.base.model.Response;
+import xianzhan.hubu.base.pj.model.Response;
 
 /**
  * EchoApi 实现类

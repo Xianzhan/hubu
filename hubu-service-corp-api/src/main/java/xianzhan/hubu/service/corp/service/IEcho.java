@@ -1,6 +1,6 @@
 package xianzhan.hubu.service.corp.service;
 
-import xianzhan.hubu.base.model.Response;
+import xianzhan.hubu.base.pj.model.Response;
 
 /**
  * 响应服务

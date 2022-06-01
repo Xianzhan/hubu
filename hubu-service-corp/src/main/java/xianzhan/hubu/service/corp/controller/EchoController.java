@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import xianzhan.hubu.base.model.Response;
+import xianzhan.hubu.base.pj.model.Response;
 import xianzhan.hubu.service.corp.service.IEcho;
 
 import javax.annotation.Resource;

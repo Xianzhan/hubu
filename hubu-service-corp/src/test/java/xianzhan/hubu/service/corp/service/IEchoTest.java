@@ -3,7 +3,7 @@ package xianzhan.hubu.service.corp.service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import xianzhan.hubu.base.model.Response;
+import xianzhan.hubu.base.pj.model.Response;
 
 import javax.annotation.Resource;
 
