@@ -15,4 +15,12 @@ public class StringUtil {
     public static boolean isEmpty(String str) {
         return str == null || str.isEmpty();
     }
+
+    /**
+     * @param str 字符串
+     * @return 字符串是否不为空
+     */
+    public static boolean isNotEmpty(String str) {
+        return !isEmpty(str);
+    }
 }
