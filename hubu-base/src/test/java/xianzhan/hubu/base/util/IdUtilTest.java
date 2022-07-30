@@ -14,4 +14,13 @@ public class IdUtilTest {
             System.out.println(IdUtil.uuid());
         }
     }
+
+    @Test
+    public void testOrderId() {
+        String corpId = "TENCENT";
+        String employeeId = "123456";
+        long orderId = IdUtil.orderId(corpId, employeeId, 0);
+        System.out.println(orderId);
+        System.out.println(Long.toBinaryString(orderId));
+    }
 }

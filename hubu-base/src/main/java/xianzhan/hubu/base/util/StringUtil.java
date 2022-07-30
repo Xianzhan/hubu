@@ -23,4 +23,16 @@ public class StringUtil {
     public static boolean isNotEmpty(String str) {
         return !isEmpty(str);
     }
+
+    public static int hash(String str) {
+        var hash = 0;
+        if (isEmpty(str)) {
+            return hash;
+        }
+        for (var i = 0; i < str.length(); i++) {
+            var c = str.charAt(i);
+            hash = 31 * hash + (c & 0xFF);
+        }
+        return hash;
+    }
 }
