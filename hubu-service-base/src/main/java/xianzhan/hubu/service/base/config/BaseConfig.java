@@ -42,7 +42,7 @@ public abstract class BaseConfig {
             InputStream is = getConfigStream();
             config = Config.fromYAML(is);
             // 使用 Jackson 序列化
-            config.setCodec(new JsonJacksonCodec());
+            config.setCodec(JsonJacksonCodec.INSTANCE);
         } catch (IOException e) {
             throw new IllegalArgumentException("Can't parse config", e);
         }

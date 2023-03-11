@@ -37,6 +37,7 @@
         <spring-cloud.version>2021.0.0</spring-cloud.version>
         <lombok.version>1.18.24</lombok.version>
         <logback.version>1.2.11</logback.version>
+        <jackson.version>2.14.2</jackson.version>
 
         <!-- https://github.com/redisson/redisson/tree/master/redisson-spring-boot-starter#1-add-redisson-spring-boot-starter-dependency-into-your-project -->
         <redisson-spring-boot.version>3.17.3</redisson-spring-boot.version>
@@ -58,13 +59,6 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
