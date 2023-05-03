@@ -3,10 +3,10 @@ package xianzhan.hubu.service.base.config.sharding;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shardingsphere.infra.exception.ShardingSphereException;
 import org.apache.shardingsphere.sharding.api.sharding.standard.PreciseShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.RangeShardingValue;
 import org.apache.shardingsphere.sharding.api.sharding.standard.StandardShardingAlgorithm;
+import xianzhan.hubu.base.exception.BaseException;
 
 import java.util.Collection;
 import java.util.Properties;
@@ -31,7 +31,7 @@ public class CorpIdStandardShardingAlgorithm implements StandardShardingAlgorith
         log.info("Hubu - Precise. availableTargetNames: {}, preciseShardingValue: {}", availableTargetNames, preciseShardingValue);
         String corpId = preciseShardingValue.getValue();
         if (corpId == null || corpId.isEmpty()) {
-            throw new ShardingSphereException("corpId is empty");
+            throw new BaseException("corpId is empty");
         }
 
         // 此处简单分片，根据 corpId 最后一个字符的 ascii 编码对 2 取模
@@ -41,7 +41,7 @@ public class CorpIdStandardShardingAlgorithm implements StandardShardingAlgorith
                 return availableTargetName;
             }
         }
-        throw new ShardingSphereException("No matching corpId found. corpId: %s, end: %s, availableTargetNames: %s", corpId, end, availableTargetNames);
+        throw new BaseException("No matching corpId found. corpId: %s, end: %s, availableTargetNames: %s".formatted(corpId, end, availableTargetNames));
     }
 
     @Override
@@ -52,12 +52,12 @@ public class CorpIdStandardShardingAlgorithm implements StandardShardingAlgorith
     }
 
     @Override
-    public void init() {
-        log.info("Hubu - CorpIdStandardShardingAlgorithm#init()");
+    public String getType() {
+        return "corp_id";
     }
 
     @Override
-    public String getType() {
-        return "corp_id";
+    public void init(Properties props) {
+        log.info("Hubu - CorpIdStandardShardingAlgorithm#init()");
     }
 }
