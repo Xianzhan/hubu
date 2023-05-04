@@ -15,3 +15,24 @@ spring:
   redis:
     redisson:
       file: classpath:redisson.yaml
+
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+#    url: jdbc:mysql://127.0.0.1:3306/hubu?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+  shardingsphere:
+    # https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/yaml-config/mode/
+    mode:
+      type: Standalone
+      repository:
+        type: JDBC
+    datasource:
+      names: hubu
+      hubu:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/hubu?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: xianzhan
+        password: xianzhan
+    props:
+      sql-show: true
+

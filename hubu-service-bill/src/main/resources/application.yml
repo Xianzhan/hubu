@@ -10,7 +10,6 @@ spring:
   application:
     name: hubu-service-bill
 
-# see application.properties
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    driver-class-name: com.mysql.jdbc.Driver
@@ -18,10 +17,51 @@ spring:
 #    username: xianzhan
 #    password: xianzhan
 
+  data:
+    redis:
+      timeout: 10000
   redis:
     redisson:
       file: classpath:redisson.yaml
-    timeout: 10000
+
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+  #    url: jdbc:mysql://127.0.0.1:3306/hubu?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+  shardingsphere:
+    # https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/yaml-config/mode/
+    mode:
+      type: Standalone
+      repository:
+        type: JDBC
+    datasource:
+      names: hubu
+      hubu:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/hubu?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+        username: xianzhan
+        password: xianzhan
+    props:
+      sql-show: true
+    # https://shardingsphere.apache.org/document/current/cn/user-manual/shardingsphere-jdbc/yaml-config/rules/
+    rules:
+      sharding:
+        key-generators:
+          snowflake:
+            type: SNOWFLAKE
+        sharding-algorithms:
+          hb_car_bill-corp_id:
+            type: corp_id
+        tables:
+          hb_car_bill:
+            actual-data-nodes: hubu.hb_car_bill_$->{0..1}
+            table-strategy:
+              standard:
+                sharding-column: corp_id
+                sharding-algorithm-name: hb_car_bill-corp_id
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflake
 
 #logging:
 #  level:
