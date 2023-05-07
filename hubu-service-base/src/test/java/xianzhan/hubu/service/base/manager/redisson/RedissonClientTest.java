@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import xianzhan.hubu.service.base.ServiceBaseApplication;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest(classes = ServiceBaseApplication.class)
 public class RedissonClientTest {
 
-    @Resource
+    @Autowired
     private RedissonClient redissonClient;
 
     private static final String K = "hello-2022";

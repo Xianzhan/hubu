@@ -2,12 +2,11 @@ package xianzhan.hubu.service.corp.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import xianzhan.hubu.base.pj.model.Response;
 import xianzhan.hubu.service.corp.pj.vo.CorpPageInVO;
 import xianzhan.hubu.service.corp.pj.vo.CorpPageOutVO;
-
-import javax.annotation.Resource;
 
 /**
  * @author xianzhan
@@ -16,7 +15,7 @@ import javax.annotation.Resource;
 @SpringBootTest
 public class ICorpServiceTest {
 
-    @Resource
+    @Autowired
     private ICorpService corpService;
 
     @Test

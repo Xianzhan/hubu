@@ -1,9 +1,13 @@
 package xianzhan.hubu.service.base.manager.memory;
 
-import org.redisson.api.*;
+import org.redisson.api.RAtomicLong;
+import org.redisson.api.RBucket;
+import org.redisson.api.RLock;
+import org.redisson.api.RSemaphore;
+import org.redisson.api.RedissonClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import xianzhan.hubu.service.base.manager.IMemoryManager;
 
-import javax.annotation.Resource;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RedissonMemoryManager implements IMemoryManager {
 
-    @Resource
+    @Autowired
     private RedissonClient redissonClient;
 
     @Override

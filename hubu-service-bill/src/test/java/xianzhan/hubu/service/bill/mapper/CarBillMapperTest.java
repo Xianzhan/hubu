@@ -3,10 +3,10 @@ package xianzhan.hubu.service.bill.mapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import xianzhan.hubu.service.bill.pj.entity.CarBillEntity;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
 @SpringBootTest
 public class CarBillMapperTest {
 
-    @Resource
+    @Autowired
     private CarBillMapper carBillMapper;
 
     @Test

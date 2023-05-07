@@ -1,17 +1,16 @@
 package xianzhan.hubu.service.base.manager.id;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import xianzhan.hubu.base.util.IdUtil;
 import xianzhan.hubu.base.util.StringUtil;
 import xianzhan.hubu.service.base.manager.IIdManager;
 import xianzhan.hubu.service.base.manager.IMemoryManager;
 
-import javax.annotation.Resource;
-
 @Component
 public class IdManager implements IIdManager {
 
-    @Resource
+    @Autowired
     private IMemoryManager memoryManager;
 
     @Override

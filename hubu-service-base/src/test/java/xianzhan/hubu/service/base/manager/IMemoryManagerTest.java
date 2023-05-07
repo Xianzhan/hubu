@@ -3,11 +3,11 @@ package xianzhan.hubu.service.base.manager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import xianzhan.hubu.service.base.ServiceBaseApplication;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @SpringBootTest(classes = ServiceBaseApplication.class)
 public class IMemoryManagerTest {
 
-    @Resource
+    @Autowired
     private IMemoryManager memoryManager;
 
     private static final String K = "hello-2022";

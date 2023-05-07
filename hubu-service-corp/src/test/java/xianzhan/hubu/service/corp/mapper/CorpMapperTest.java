@@ -2,11 +2,10 @@ package xianzhan.hubu.service.corp.mapper;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import xianzhan.hubu.base.constant.HubuConst;
 import xianzhan.hubu.service.corp.pj.entity.CorpEntity;
-
-import javax.annotation.Resource;
 
 /**
  * @author xianzhan
@@ -15,7 +14,7 @@ import javax.annotation.Resource;
 @SpringBootTest
 public class CorpMapperTest {
 
-    @Resource
+    @Autowired
     private CorpMapper corpMapper;
 
     @Test
